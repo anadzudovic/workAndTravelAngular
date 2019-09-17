@@ -1,0 +1,14 @@
+.navbar{
+    justify-content: space-between;
+}
+span{
+    padding-right: 5rem;
+ 
+}
+.mat-button{
+font-size: 16px;
+}
+.mat-button:hover {
+    background-color:white;
+    color:#3f51b5; 
+  }

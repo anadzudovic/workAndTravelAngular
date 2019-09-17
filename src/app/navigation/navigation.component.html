@@ -1,0 +1,29 @@
+<mat-toolbar color="primary" class="navbar">
+
+    <div class="mat-heading">WORK AND TRAVEL AGENCY</div>
+
+    <div>
+        <span *ngIf="!client"> <a mat-button [routerLink]="'/home'"> HOME</a>
+        </span>
+
+        <span *ngIf="logIn"> <a mat-button (click)="login()"> Log in </a>
+        </span>
+        <span *ngIf="logIn"> <a mat-button (click)="signup()"> Sign up</a>
+        </span>
+        <span *ngIf="admin"> <a mat-button [routerLink]="'/employers'"> Employers</a>
+        </span>
+        <span *ngIf="admin"> <a mat-button [routerLink]="'/jobOffers'"> Job Offers</a>
+        </span>
+        <span *ngIf="admin"> <a mat-button [routerLink]="'/applications'"> Applications</a>
+        </span>
+
+        <span *ngIf="client"> <a mat-button [routerLink]="'/jobOffersClient'">Job offers</a>
+        </span>
+        <span *ngIf="client"> <a mat-button [routerLink]="'/applicationsClient'"> My applications</a>
+        </span>
+
+        <span *ngIf="!logIn"> <a mat-button (click)="logout()"> Log out </a>
+        </span>
+    </div>
+
+</mat-toolbar>

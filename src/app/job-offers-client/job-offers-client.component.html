@@ -1,0 +1,16 @@
+<app-navigation></app-navigation>
+<br>
+<app-search-bar-job-offers [jobOffers]="jobOffers" (searchEvent)="updateSearch($event)"></app-search-bar-job-offers>
+<mat-card>
+    <mat-card-header>
+    
+    </mat-card-header>
+    <mat-card-content>
+            <div class="row text-center text-lg-left">
+        <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let jobOffer of jobOffers">
+            <app-job-offers-client-card [jobOffer]="jobOffer"></app-job-offers-client-card>
+        </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>

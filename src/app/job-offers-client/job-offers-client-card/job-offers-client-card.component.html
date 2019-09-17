@@ -1,0 +1,63 @@
+<mat-card>
+  <mat-card-header>
+
+    <mat-card-title>{{jobOffer.employer.name}}</mat-card-title>
+    <mat-card-subtitle>{{jobOffer.employer.city.name}}, {{jobOffer.employer.city.state.name}}</mat-card-subtitle>
+    
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+   <br>
+    <div>
+      <div class="row">
+        <div class="col-md-7" style=" font-weight:bold;">
+          From date:</div>
+        <div class="col-md-5">
+          {{jobOffer.fromDate}}
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-7" style=" font-weight:bold;">
+
+          To date :
+        </div>
+        <div class="col-md-5">
+          {{jobOffer.toDate}}
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-7" style=" font-weight:bold;">
+
+
+          Job title :
+        </div>
+        <div class="col-md-5">
+          {{jobOffer.job.title}}
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-7" style=" font-weight:bold;">
+
+          Tips:
+        </div>
+        <div class="col-md-5">
+          {{jobOffer.tips}}
+        </div>
+      </div>
+    </div>
+
+  </mat-card-content>
+  <mat-divider></mat-divider>
+
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="view()">VIEW DETAILS</button>
+    <span class="fill-remaining-space"></span>
+    <button mat-raised-button color="primary" *ngIf=" !admin && !applied" (click)="apply()" >APPLY FOR A JOB</button>
+
+    <div *ngIf="applied" class="applied"> ALREADY APPLIED FOR THIS JOB!</div>
+  </mat-card-actions>
+
+</mat-card>

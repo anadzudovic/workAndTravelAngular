@@ -1,0 +1,72 @@
+<app-navigation></app-navigation>
+<br>
+<div class="search-div">
+
+    <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" color="primary" matSort class="mat-elevation-z8">
+
+
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Application date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.creationDate}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="jobOfferObject">
+            <mat-header-cell *matHeaderCellDef> Job offer object</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.jobOffer}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="jobOffer.employer.name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Employer </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.jobOffer.employer.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="jobOffer.employer.city.name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.jobOffer.employer.city.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="jobOffer.employer.city.state.name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.jobOffer.employer.city.state.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="jobOffer.fromDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>From date</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.jobOffer.fromDate}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="jobOffer.toDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>To date</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.jobOffer.toDate}} </mat-cell>
+            </ng-container>
+
+
+        <ng-container matColumnDef="jobOffer.job.title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Job title</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.jobOffer.job.title}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> ACTIONS(View/Delete)</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-icon-button color="primary" matTooltip="View" (click)="view(row)">
+                    <mat-icon>info</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" matTooltip="Delete" (click)="delete(row)">
+                    <mat-icon>delete_outline</mat-icon>
+                </button>
+            
+              
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="6">
+                Loading data...
+            </mat-footer-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

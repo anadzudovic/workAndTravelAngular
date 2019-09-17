@@ -1,0 +1,94 @@
+<app-navigation></app-navigation>
+<br>
+<div class="search-div">
+    <button mat-raised-button (click)="create()" color="primary">
+        <mat-icon>add</mat-icon>New job offer
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput (keyup)="applyFilter($event.target.value)"
+            placeholder="Search">
+    </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" color="primary" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="jobOfferId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.jobOfferId}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="tips">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Tips </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.tips}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="hourlyWage">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Hourly wage(US DOLLARS) </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.hourlyWage}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="overtime">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Overtime</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.overTime}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="fromDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>From Date</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fromDate}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="toDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> To Date </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.toDate}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="employer.name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Employer </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.employer.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="employer.city.name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> City</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.employer.city.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="employer.city.state.name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>State </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.employer.city.state.name}} </mat-cell>
+        </ng-container>
+
+    <ng-container matColumnDef="employerObject">
+        <mat-header-cell *matHeaderCellDef> Object</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.employer}} </mat-cell>
+    </ng-container>
+
+        <ng-container matColumnDef="job.title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Job title</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.job.title}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="jobObject">
+            <mat-header-cell *matHeaderCellDef> Job object </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.job}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef> ACTIONS (View/Edit)</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <button mat-icon-button color="primary" matTooltip="View"(click)="view(row)"><mat-icon>info</mat-icon></button>
+                  <button mat-icon-button  color="primary"  matTooltip="Edit" (click)="edit(row)"><mat-icon>launch</mat-icon></button>
+                
+                </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="loading">
+                <mat-footer-cell *matFooterCellDef colspan="6">
+                  Loading data...
+                </mat-footer-cell>
+              </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row (click)="logData(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

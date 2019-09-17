@@ -1,0 +1,27 @@
+
+    <mat-toolbar color="primary" class="toolBar">
+
+        <div class="mat-display-5">LOG IN FORM</div>
+        <span class="fill-remaining-space"></span>
+        <button class="btn-dialog-close" mat-stroked-button (click)="close()" tabIndex="-1">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </mat-toolbar>
+    <form [formGroup]="form" class="normal-form">
+        <div class="controles-container">
+            <mat-form-field>
+        <input type="text" matInput placeholder="Username" formControlName="username">
+        <mat-error>This field is required.</mat-error>
+    </mat-form-field>
+<mat-form-field>
+        <show-hide-password [btnOutline]="true" [btnStyle]="primary">
+        <input type="password" matInput placeholder="Password" formControlName="password">
+        </show-hide-password>
+        <mat-error>This field is required.</mat-error>
+    </mat-form-field>
+    <br>
+    <br>
+    <button class="save" mat-raised-button color="primary" (click)="login()">LOG IN</button>
+    </div>
+    </form>
+

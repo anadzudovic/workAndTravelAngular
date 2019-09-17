@@ -1,0 +1,75 @@
+
+    <mat-toolbar color="primary" class="toolBar">
+
+        <div class="mat-display-5">SIGN UP FORM</div>
+        <span class="fill-remaining-space"></span>
+        <button class="btn-dialog-close" mat-stroked-button (click)="close()" tabIndex="-1">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </mat-toolbar> 
+<form [formGroup]="form" class="normal-form">
+    <div class="controles-container">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field style="margin-top: 0.4em">
+                    <input matInput placeholder="Username" formControlName="username">
+                    <mat-error>This field is required.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field>
+                    <show-hide-password  size='sm' [btnOutline]="false" [btnStyle]="primary">
+                    <input matInput placeholder="Password" formControlName="password" type="password">
+                    </show-hide-password>
+                    <mat-error>This field is required.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                    <input matInput placeholder="First name" formControlName="firstName">
+                    <mat-error *ngIf="form.controls['firstName'].errors?.required">This field is required.</mat-error>
+                    <mat-error *ngIf="form.controls['firstName'].errors?.pattern">This field must contain only letters and spaces.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field>
+                    <input matInput placeholder="Last name" formControlName="lastName">
+                    <mat-error *ngIf="form.controls['lastName'].errors?.required">This field is required.</mat-error>
+                    <mat-error *ngIf="form.controls['lastName'].errors?.pattern">This field must contain only letters and spaces.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                    <input matInput placeholder="JMBG" formControlName="JMBG">
+                    <mat-error *ngIf="form.controls['JMBG'].errors?.required">This field is required.</mat-error>
+                    <mat-error *ngIf="form.controls['JMBG'].errors?.minlength">Minimum 13 charactors needed.</mat-error>
+                    <mat-error *ngIf="form.controls['JMBG'].errors?.maxlength">Maximum 13 charactors needed.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                    <input matInput placeholder="Phone number" formControlName="phoneNumber">
+                    <mat-error *ngIf="form.controls['phoneNumber'].errors?.required">This field is required.</mat-error>
+                    <mat-error *ngIf="form.controls['phoneNumber'].errors?.pattern">This field must contain only numbers.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email" type="email">
+                    <mat-error *ngIf="form.controls['email'].errors?.required">This field is required.</mat-error>
+                    <mat-error *ngIf="form.controls['email'].errors?.email">This field must be in email format.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <br>
+        <button mat-raised-button color="primary" class="save" (click)="signup()">Sign Up</button>
+
+    </div>
+</form>
+

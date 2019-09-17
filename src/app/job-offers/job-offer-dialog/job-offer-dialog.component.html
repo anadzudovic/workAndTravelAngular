@@ -1,0 +1,133 @@
+<mat-dialog-content>
+    <mat-toolbar color="primary" class="toolBar">
+        <div class="mat-display-5" *ngIf="service.createJobOffer">New job offer</div>
+        <div class="mat-display-5" *ngIf="service.updateJobOffer">Edit job offer </div>
+        <div class="mat-display-5" *ngIf="service.viewJobOffer">View job offer</div>
+        <span class="fill-remaining-space"></span>
+        <button class="btn-dialog-close" mat-stroked-button (click)="close()" tabIndex="-1">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </mat-toolbar>
+    <form [formGroup]="service.form" class="normal-form">
+
+        <div class="controles-container">
+            <br>
+            <div class="row">
+                <div class="col-md-6" *ngIf="!service.createJobOffer">
+                    <mat-form-field>
+                        <input formControlName="jobOfferId" matInput placeholder="Job offer Id" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input formControlName="hourlyWage" matInput placeholder="Hourly wage(US DOLLARS)"
+                            [readonly]="service.viewJobOffer">
+                            <mat-error *ngIf="service.form.controls['hourlyWage'].errors?.required">This field is required.
+                            </mat-error>
+                            <mat-error *ngIf="service.form.controls['hourlyWage'].errors?.pattern">This field must contain
+                                only
+                                numbers with . as separator.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input formControlName="fromDate" matInput [matDatepicker]="myDP" matInput
+                            placeholder="From date" [readonly]="service.viewJobOffer">
+                        <mat-datepicker-toggle [for]="myDP" matSuffix></mat-datepicker-toggle>
+                        <mat-datepicker #myDP startView="year"></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input formControlName="toDate" [min]="service.minDate()" matInput [matDatepicker]="myDP2"
+                            matInput placeholder="To Date" [readonly]="service.viewJobOffer">
+                        <mat-datepicker-toggle [for]="myDP2" matSuffix></mat-datepicker-toggle>
+                        <mat-datepicker #myDP2 startView="year"></mat-datepicker>
+                        
+                    </mat-form-field>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <mat-form-field>
+                        <input formControlName="description" matInput placeholder="Description"
+                            [readonly]="service.viewJobOffer">
+                    </mat-form-field>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-checkbox formControlName="tips" labelPosition="before" color="primary"
+                        [disabled]="service.viewJobOffer">Tips</mat-checkbox>
+                </div>
+                <div class="col-md-6">
+                    <mat-checkbox formControlName="overTime" labelPosition="before" color="primary"
+                        [disabled]="service.viewJobOffer">Overtime</mat-checkbox>
+                </div>
+            </div>
+            <br>
+            <div class="mat-title">Employer Info:</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input formControlName="employerId" matInput placeholder="Employer id" readonly>
+                        <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input formControlName="employer" matInput placeholder="Employer" readonly>
+                        <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input formControlName="city" matInput placeholder="City" readonly>
+
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input formControlName="state" matInput placeholder="State" readonly>
+
+                    </mat-form-field>
+                </div>
+            </div>
+            <app-employers-table *ngIf="!service.viewJobOffer"></app-employers-table>
+            <br>
+            <div class="mat-title">Job Info:</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input formControlName="jobId" matInput placeholder="Job id" readonly>
+                        <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field>
+                        <input formControlName="job" matInput placeholder="Job" readonly>
+                        <mat-error>This field is required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </form>
+
+   
+    <br>
+    <app-jobs-table *ngIf="!service.viewJobOffer"></app-jobs-table>
+
+    <button class="save" mat-raised-button *ngIf="service.createJobOffer" color="primary" (click)="save()"
+        [disabled]="service.form.invalid">Save</button>
+    <button class="update" mat-raised-button *ngIf="service.updateJobOffer" color="primary" (click)="update()"
+        [disabled]="service.form.invalid">Update</button>
+
+
+</mat-dialog-content>

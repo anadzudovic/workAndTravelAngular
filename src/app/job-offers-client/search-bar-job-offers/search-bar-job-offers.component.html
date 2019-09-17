@@ -1,0 +1,66 @@
+
+<mat-card class="card">  
+    <mat-card-content>
+            
+    <form class="forma1">
+           
+        <div class="row">
+            <div class="col-md-2">
+                <mat-form-field class="example-full-width" >
+                    <mat-label> State: </mat-label>
+                    <mat-select [(ngModel)]="state.stateId"  [ngModelOptions]="{standalone: true}">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let state of states" [value]="state.stateId">
+                            {{state.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <mat-form-field class="example-full-width" >
+                    <mat-label> Date from</mat-label>
+                    <input matInput [matDatepicker]="myDP2" matInput placeholder="From date" [(ngModel)]="fromDate"
+                        [ngModelOptions]="{standalone: true}">
+                    <mat-datepicker-toggle [for]="myDP2" matSuffix></mat-datepicker-toggle>
+                    <mat-datepicker #myDP2 startView="year"></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <mat-form-field class="example-full-width" >
+                    <mat-label> Date to</mat-label>
+                    <input matInput [matDatepicker]="myDP1" matInput placeholder="To Date" [(ngModel)]="toDate"
+                        [ngModelOptions]="{standalone: true}" [min]="minDate()">
+                    <mat-datepicker-toggle [for]="myDP1" matSuffix></mat-datepicker-toggle>
+                    <mat-datepicker #myDP1 startView="year"></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <mat-form-field class="example-full-width" >
+                    <mat-label> Job: </mat-label>
+                    <mat-select [(ngModel)]="job.jobId" [ngModelOptions]="{standalone: true}">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let job of jobs" [value]="job.jobId">
+                            {{job.title}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-1"> 
+                <br>
+               
+                <mat-checkbox  labelPosition="before" color="primary" [(ngModel)]="tips" [ngModelOptions]="{standalone: true}"> Tips:</mat-checkbox>    
+            </div>
+            <div class="col-md-3">
+                    <br>
+                   
+                <button class="search" mat-raised-button  color="primary" (click)="search()">SEARCH</button>
+                <br>
+                <br>
+            </div>
+           
+        </div>
+        
+    </form>
+
+</mat-card-content>
+</mat-card>

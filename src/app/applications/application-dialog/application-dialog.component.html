@@ -1,0 +1,127 @@
+<mat-dialog-content>
+    <mat-toolbar color="primary" class="toolBar">
+
+        <div class="mat-display-5">View job application</div>
+        <span class="fill-remaining-space"></span>
+        <button class="btn-dialog-close" mat-stroked-button (click)="close()" tabIndex="-1">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </mat-toolbar>
+    <form [formGroup]="service.form" class="normal-form">
+
+        <div class="controles-container">
+            <div class="mat-title">Job application info:</div>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="applicationId" matInput placeholder="Application Id" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="date" matInput placeholder="Date" readonly>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="mat-title">Client info:</div>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="clientId" matInput placeholder="Client Id" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="firstName" matInput placeholder="First name" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="lastName" matInput placeholder="Last name" readonly>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="jmbg" matInput placeholder="Jmbg" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="clientEmail" matInput placeholder="Email" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="clientPhoneNumber" matInput placeholder="Phone number" readonly>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="mat-title">Job offer info:</div>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="jobOfferId" matInput placeholder="Job offer id" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="fromDate" matInput placeholder="From date" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="toDate" matInput placeholder="To date" readonly>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="mat-title">Employer info:</div>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="employerId" matInput placeholder="Employer id" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="employerName" matInput placeholder="Name" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="employerEmail" matInput placeholder="Email" readonly>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="city" matInput placeholder="City" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="state" matInput placeholder="State" readonly>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="mat-title">Job info:</div>
+            <div class="row">
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="jobId" matInput placeholder="Job id" readonly>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field>
+                        <input formControlName="job" matInput placeholder="Job title" readonly>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+</mat-dialog-content>
